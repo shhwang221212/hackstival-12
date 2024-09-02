@@ -2,6 +2,7 @@ import streamlit as st
 
 import util.ai_util as aiutil
 import util.prompt as prompt
+import util.news_crawler as crawler
 
 
 def main():
@@ -13,6 +14,10 @@ def main():
 
     # 챗봇 생성
     create_chat(openai_client)
+
+    # 뉴스 크롤러 생성
+    # crawler.crawler_naver_test()
+    crawler.crawler_google_test()
 
     st.title("hackathon12")
     st.write("헥스티벌 12조")

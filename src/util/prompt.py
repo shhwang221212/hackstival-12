@@ -9,7 +9,7 @@ def get_prompt_file_content(file_name):
     current_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir))
     prompt_file_content = os.path.join(parent_dir, 'prompt', file_name)
-    print(prompt_file_content)
+
     with open(prompt_file_content, 'r') as file:
         return file.read()
 
