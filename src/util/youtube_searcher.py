@@ -17,7 +17,7 @@ def youtube_search(query):
         part = 'snippet',
         q = query, # 'boating|sailing -fishing'과 같이 여러 조건으로도 검색할 수 있음
         type = 'video',
-        maxResults = 5,
+        maxResults = 3,
         # publishedAfter = '', # 특정 날짜 이후 게시된 비디오만 검색 ex. 2023-01-01T00:00:00Z
         # publishedBefore = '', # 특정 날짜 이전에 게시된 비디오만 검색 ex. 2023-12-31T23:59:59Z
     )
@@ -26,12 +26,15 @@ def youtube_search(query):
     
     for idx, item in enumerate(response['items']):
         if item['id']['kind'] == 'youtube#video':
-            title = item['snippet']['title']
             video_id = item['id']['videoId']
-            print(f"idx: {idx}, title:{title}, videoId:{video_id}")
+            video_url = f"https://www.youtube.com/watch?v={video_id}"
+            title = item['snippet']['title']
+            description = item['snippet']['description']
+            thumbnail = item['snippet']['thumbnails']['high']['url']
+            print(f"idx: {idx}\ntitle:{title}\ndescription:{description}\nvideoURL:{video_url}\nthumbnail:{thumbnail}\n\n")
     
 try: 
-    youtube_search('python')
+    youtube_search('유플러스') # 검색 키워드
 except ConnectionResetError as e:
     logging.error("Youtube Search API ConnectionResetError")
     logging.error(e)
