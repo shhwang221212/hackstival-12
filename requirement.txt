@@ -6,3 +6,4 @@ python-dotenv
 tiktoken
 beautifulsoup4
 selenium
+google-api-python-client
